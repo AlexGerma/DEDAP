@@ -16,15 +16,15 @@ namespace SistemaUTH.Data
             {
                 return;//regresa registros 
             }
-            var categorias = new Categoria[] { new Categoria { Name = "Programacion",
-                Descripcion = "Desarrollo de aplicaciones",State = true} ,
-                new Categoria{Name = "Exprecion oral y escrita",Descripcion ="Clase filosofia",
-                    State = true } };
+            //var categorias = new Categoria[] { new Categoria { Name = "Programacion",
+            //    Descripcion = "Desarrollo de aplicaciones",State = true} ,
+            //    new Categoria{Name = "Exprecion oral y escrita",Descripcion ="Clase filosofia",
+            //        State = true } };
 
-            foreach (Categoria c in categorias)//agrega los objetos al contexto para guardarlos en la base datos
-            {
-                context.Categoria.Add(c);
-            }
+            //foreach (Categoria c in categorias)//agrega los objetos al contexto para guardarlos en la base datos
+            //{
+            //    context.Categoria.Add(c);
+            //}
             context.SaveChanges();//guarda el contexto
 
         }

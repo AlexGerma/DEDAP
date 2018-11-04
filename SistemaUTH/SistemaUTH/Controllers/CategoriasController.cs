@@ -19,9 +19,48 @@ namespace SistemaUTH.Controllers
         }
 
         // GET: Categorias
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString,string currentFilter, int? page)
         {
-            return View(await _context.Categoria.ToListAsync());
+            ViewData["CurrentSort"] = sortOrder;//obtiene la obicacion actual;
+
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DescripcionSortParm"] = sortOrder== "descripcion_asc"?"descripcion_desc":"descripcion_asc";
+            ViewData["CurrentFilter"] = searchString; // obtiene el valor a buscar en el input
+            
+            if (searchString != null) {
+                page = 1;
+            }//validacion de la busqueda muestra, si hay resultado o noes lo que muestra.
+            else {
+                searchString = currentFilter;
+            }
+            var categorias = from s in _context.Categoria select s; //un select referente a una query
+
+            if (!String.IsNullOrEmpty(searchString))//verificar si la var Serchstring tiene nombre o descripcio
+            {
+                categorias = categorias.Where(s => s.Name.Contains(searchString) || s.Descripcion.Contains(searchString));
+            }
+            switch (sortOrder) // ordena lascategorias
+            {
+                case "name_desc":
+                    categorias = categorias.OrderByDescending(s => s.Name);
+                        break;
+                case "descripcion_asc":
+                    categorias = categorias.OrderBy(s => s.Descripcion);
+                    break;
+                case "descripcion_desc":
+                    categorias = categorias.OrderByDescending(s => s.Descripcion);
+                    break;
+                default:
+                    categorias = categorias.OrderBy(s => s.Name);
+                    break;
+            }
+            //return View(await _context.Categoria.ToListAsync());
+            // regresa la ista con el ordenamiento realizado a la coleccion Categorias
+            //return View(await categorias.AsNoTracking().ToListAsync());
+
+            int pageSize = 5;//visualisa el nuemero de elementos que muestra una vista
+            return View(await Paginacion<Categoria>.CreatesAsync(categorias.AsNoTracking(),page??1,pageSize));//regresa el total de resultado de elemento. 
+
         }
 
         // GET: Categorias/Details/5

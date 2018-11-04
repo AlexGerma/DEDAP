@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using SistemaUTH.Models;
 
 namespace SistemaUTH.Models
 {
@@ -14,5 +15,7 @@ namespace SistemaUTH.Models
         }
 
         public DbSet<SistemaUTH.Models.Categoria> Categoria { get; set; }
+
+        public DbSet<SistemaUTH.Models.Estudiante> Estudiante { get; set; }
     }
 }
