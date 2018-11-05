@@ -18,7 +18,7 @@ namespace SistemaUTH.Models
         //Matricula
         [Required]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "El minimo de letras permitido son 3 y maximo 50")]
-        public Int32 Matricula { get; set; }
+        public String Matricula { get; set; }
 
         //apellido paterno
         [Required]
