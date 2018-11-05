@@ -35,7 +35,7 @@ namespace SistemaUTH.Data
                 var estudiantes = new Estudiante[] { new Estudiante {Name= "Edualo", Ap_paterno="Rosale", Ap_materno="Maltilez", Matricula="111666", EstudianteID=1},
                 new Estudiante{Name= "Pelele", Ap_paterno="leamel", Ap_materno="golme", Matricula="666666", EstudianteID=2 } };
 
-                foreach  (Estudiante e in estudiantes)
+                foreach (Estudiante e in estudiantes)
                 {
                     context.Estudiante.Add(e);
 
@@ -47,7 +47,7 @@ namespace SistemaUTH.Data
                 return;
 
 
-                var instructor = new Instructor[] { new Instructor {Name= "Elmer", Apellidos="Meras molina", Correo="elmer12@gmail.com", NumEmpleado="666", Celular="6622018868"} };
+                var instructor = new Instructor[] { new Instructor { Name = "Elmer", Apellidos = "Meras molina", Correo = "elmer12@gmail.com", NumEmpleado = "666", Celular = "6622018868" } };
 
                 foreach (Instructor e in instructor)
                 {

@@ -19,5 +19,7 @@ namespace SistemaUTH.Models
         public DbSet<SistemaUTH.Models.Estudiante> Estudiante { get; set; }
 
         public DbSet<SistemaUTH.Models.Instructor> Instructor { get; set; }
+
+        public DbSet<SistemaUTH.Models.Clase> Clase { get; set; }
     }
 }
